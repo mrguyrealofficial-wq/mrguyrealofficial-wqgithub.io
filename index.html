@@ -1,0 +1,207 @@
+<!-- Server Status Section -->
+        <section id="status" class="status-section">
+            <h2 class="section-title">Server Status</h2>
+            <div class="status-container">
+                <div class="status-card">
+                    <div class="status-indicator online"></div>
+                    <h3 class="status-title">Discord Server</h3>
+                    <p class="status-value" id="discord-status">ONLINE</p>
+                    <p class="status-detail">Last checked: <span id="last-check">Just now</span></p>
+                </div>
+                
+                <div class="status-card">
+                    <div class="status-indicator"></div>
+                    <h3 class="status-title">Active Members</h3>
+                    <p class="status-value" id="active-members">--</p>
+                    <p class="status-detail">Currently online</p>
+                </div>
+                
+                <div class="status-card">
+                    <div class="status-indicator"></div>
+                    <h3 class="status-title">Total Members</h3>
+                    <p class="status-value" id="total-members">--</p>
+                    <p class="status-detail">In the server</p>
+                </div>
+                
+                <div class="status-card">
+                    <div class="status-indicator"></div>
+                    <h3 class="status-title">Voice Activity</h3>
+                    <p class="status-value" id="voice-activity">--</p>
+                    <p class="status-detail">In voice channels</p>
+                </div>
+            </div>
+        </section><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE LOBBY</title>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Three.js for 3D graphics -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    
+    <!-- GSAP for smooth animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+<body>
+    <!-- Floating Navigation Menu -->
+    <nav class="floating-nav">
+        <div class="nav-logo">THE LOBBY</div>
+        <ul class="nav-links">
+            <li><a href="#home">HOME</a></li>
+            <li><a href="#channels">CHANNELS</a></li>
+            <li><a href="status.html">STATUS</a></li>
+            <li><a href="#stats">STATS</a></li>
+        </ul>
+    </nav>
+
+    <!-- Three.js canvas -->
+    <div id="canvas-container"></div>
+    
+    <!-- Smoke Canvas -->
+    <canvas id="smoke-canvas"></canvas>
+    
+    <!-- Scanlines -->
+    <div class="scanlines"></div>
+
+    <!-- Content -->
+    <div class="content">
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="glitch-wrapper">
+                <h1 class="logo">THE LOBBY</h1>
+            </div>
+            <p class="tagline">WHERE THE SQUAD LEVELS UP</p>
+            <a href="https://discord.gg/sUQKGE2rnP" class="cta-button" target="_blank">
+                ENTER SERVER
+            </a>
+        </section>
+
+        <!-- Channels Section -->
+        <section id="channels" class="channels-section">
+            <h2 class="section-title">Channels</h2>
+            <div class="channels-grid">
+                <div class="channel-card">
+                    <div class="channel-icon">🎮</div>
+                    <h3 class="channel-name">WARFRAME</h3>
+                    <p class="channel-desc">Trading, builds, farming squads, and endgame content</p>
+                </div>
+                
+                <div class="channel-card">
+                    <div class="channel-icon">🎯</div>
+                    <h3 class="channel-name">FORTNITE</h3>
+                    <p class="channel-desc">Squad finder, ranked grinding, creative maps</p>
+                </div>
+                
+                <div class="channel-card">
+                    <div class="channel-icon">🥊</div>
+                    <h3 class="channel-name">BOXING</h3>
+                    <p class="channel-desc">Fight discussions, watch parties, highlights</p>
+                </div>
+                
+                <div class="channel-card">
+                    <div class="channel-icon">⚽</div>
+                    <h3 class="channel-name">SOCCER</h3>
+                    <p class="channel-desc">Match talk, player debates, fantasy leagues</p>
+                </div>
+                
+                <div class="channel-card">
+                    <div class="channel-icon">💬</div>
+                    <h3 class="channel-name">GENERAL</h3>
+                    <p class="channel-desc">Everything else, memes, daily chat</p>
+                </div>
+                
+                <div class="channel-card">
+                    <div class="channel-icon">🔊</div>
+                    <h3 class="channel-name">VOICE</h3>
+                    <p class="channel-desc">Drop-in voice channels, better than calls</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Server Status Section -->
+        <section id="status" class="status-section">
+            <h2 class="section-title">Server Status</h2>
+            <div class="status-container">
+                <div class="status-card">
+                    <div class="status-indicator online"></div>
+                    <h3 class="status-title">Discord Server</h3>
+                    <p class="status-value" id="discord-status">ONLINE</p>
+                    <p class="status-detail">Last checked: <span id="last-check">Just now</span></p>
+                </div>
+                
+                <div class="status-card">
+                    <div class="status-indicator"></div>
+                    <h3 class="status-title">Active Members</h3>
+                    <p class="status-value" id="active-members">--</p>
+                    <p class="status-detail">Currently online</p>
+                </div>
+                
+                <div class="status-card">
+                    <div class="status-indicator"></div>
+                    <h3 class="status-title">Total Members</h3>
+                    <p class="status-value" id="total-members">--</p>
+                    <p class="status-detail">In the server</p>
+                </div>
+                
+                <div class="status-card">
+                    <div class="status-indicator"></div>
+                    <h3 class="status-title">Voice Activity</h3>
+                    <p class="status-value" id="voice-activity">--</p>
+                    <p class="status-detail">In voice channels</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Discord Widget Section -->
+        <section class="discord-widget-section">
+            <h2 class="section-title">Join Our Discord</h2>
+            <div style="display: flex; justify-content: center; padding: 2rem 0;">
+                <iframe src="https://discord.com/widget?id=1428566736109572302&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section id="stats" class="stats-section">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number" data-count="6">0</div>
+                    <div class="stat-label">Channels</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-count="247">0</div>
+                    <div class="stat-label">Uptime</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-count="100">0</div>
+                    <div class="stat-label">Active</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 class="footer-title">THE LOBBY</h3>
+                    <p class="footer-text">Where the squad levels up.</p>
+                </div>
+                <div class="footer-section">
+                    <h3 class="footer-title">Contact</h3>
+                    <p class="footer-text">Email: <a href="mailto:mrguyrealofficial@gmail.com" class="footer-link">mrguyrealofficial@gmail.com</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="footer-text">THE LOBBY © 2025 | Built Different</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server Status - THE LOBBY</title>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Three.js for 3D graphics -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    
+    <!-- GSAP for smooth animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+<body>
+    <!-- Floating Navigation Menu -->
+    <nav class="floating-nav">
+        <div class="nav-logo">THE LOBBY</div>
+        <ul class="nav-links">
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="index.html#channels">CHANNELS</a></li>
+            <li><a href="status.html">STATUS</a></li>
+            <li><a href="index.html#stats">STATS</a></li>
+        </ul>
+    </nav>
+
+    <!-- Three.js canvas -->
+    <div id="canvas-container"></div>
+    
+    <!-- Smoke Canvas -->
+    <canvas id="smoke-canvas"></canvas>
+    
+    <!-- Scanlines -->
+    <div class="scanlines"></div>
+
+    <!-- Content -->
+    <div class="content">
+        <!-- Server Status Section -->
+        <section id="status" class="status-section" style="min-height: 100vh; padding-top: 150px;">
+            <h2 class="section-title">Server Status</h2>
+            <div class="status-container">
+                <div class="status-card">
+                    <div class="status-indicator online"></div>
+                    <h3 class="status-title">Discord Server</h3>
+                    <p class="status-value" id="discord-status">ONLINE</p>
+                    <p class="status-detail">Last checked: <span id="last-check">Just now</span></p>
+                </div>
+                
+                <div class="status-card">
+                    <div class="status-indicator"></div>
+                    <h3 class="status-title">Active Members</h3>
+                    <p class="status-value" id="active-members">--</p>
+                    <p class="status-detail">Currently online</p>
+                </div>
+                
+                <div class="status-card">
+                    <div class="status-indicator"></div>
+                    <h3 class="status-title">Total Members</h3>
+                    <p class="status-value" id="total-members">--</p>
+                    <p class="status-detail">In the server</p>
+                </div>
+                
+                <div class="status-card">
+                    <div class="status-indicator"></div>
+                    <h3 class="status-title">Voice Activity</h3>
+                    <p class="status-value" id="voice-activity">--</p>
+                    <p class="status-detail">In voice channels</p>
+                </div>
+            </div>
+            
+            <!-- Back to Home Button -->
+            <div style="text-align: center; margin-top: 4rem;">
+                <a href="index.html" class="cta-button" style="display: inline-block; text-decoration: none;">
+                    Back to Home
+                </a>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 class="footer-title">THE LOBBY</h3>
+                    <p class="footer-text">Where the squad levels up.</p>
+                </div>
+                <div class="footer-section">
+                    <h3 class="footer-title">Contact</h3>
+                    <p class="footer-text">Email: <a href="mailto:mrguyrealofficial@gmail.com" class="footer-link">mrguyrealofficial@gmail.com</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="footer-text">THE LOBBY © 2025 | Built Different</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="main.js"></script>
+    <script>
+        // Discord API endpoint
+        const DISCORD_API = 'https://discord.com/api/guilds/1428566736109572302/widget.json';
+
+        // Fetch real Discord server data
+        async function fetchServerStatus() {
+            try {
+                const response = await fetch(DISCORD_API);
+                
+                if (!response.ok) {
+                    throw new Error('Failed to fetch server data');
+                }
+                
+                const data = await response.json();
+                
+                // Update Discord Status
+                document.getElementById('discord-status').textContent = 'ONLINE';
+                
+                // Count active (online) members
+                const activeMembers = data.members ? data.members.length : 0;
+                document.getElementById('active-members').textContent = activeMembers;
+                
+                // Total members from presence_count
+                const totalMembers = data.presence_count || 0;
+                document.getElementById('total-members').textContent = totalMembers;
+                
+                // Count voice activity
+                const voiceChannels = data.channels ? data.channels.filter(ch => ch.type === 2) : [];
+                let voiceActivity = 0;
+                data.members?.forEach(member => {
+                    if (member.channel_id && voiceChannels.some(ch => ch.id === member.channel_id)) {
+                        voiceActivity++;
+                    }
+                });
+                document.getElementById('voice-activity').textContent = voiceActivity;
+                
+                // Update all status indicators to online
+                const indicators = document.querySelectorAll('.status-indicator');
+                indicators.forEach(indicator => {
+                    indicator.classList.add('online');
+                });
+                
+            } catch (error) {
+                console.error('Error fetching Discord data:', error);
+                
+                // Fallback to offline status
+                document.getElementById('discord-status').textContent = 'OFFLINE';
+                document.getElementById('active-members').textContent = '--';
+                document.getElementById('total-members').textContent = '--';
+                document.getElementById('voice-activity').textContent = '--';
+            }
+            
+            // Update last check time
+            const lastCheckElement = document.getElementById('last-check');
+            const now = new Date();
+            lastCheckElement.textContent = now.toLocaleTimeString();
+        }
+
+        // Fetch immediately on load
+        fetchServerStatus();
+        
+        // Update every 30 seconds
+        setInterval(fetchServerStatus, 30000);
+    </script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rules - THE LOBBY</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+<body>
+    <nav class="floating-nav">
+        <div class="nav-logo">THE LOBBY</div>
+        <ul class="nav-links">
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="about.html">ABOUT</a></li>
+            <li><a href="status.html">STATUS</a></li>
+            <li><a href="rules.html">RULES</a></li>
+        </ul>
+    </nav>
+
+    <div id="canvas-container"></div>
+    <canvas id="smoke-canvas"></canvas>
+    <div class="scanlines"></div>
+
+    <div class="content">
+        <section class="page-section" style="min-height: 100vh; padding-top: 150px;">
+            <h1 class="section-title">Server Rules</h1>
+            
+            <div class="rules-intro">
+                <p>Keep it simple: Don't be a jerk. But here are the specifics:</p>
+            </div>
+
+            <div class="rules-container">
+                <div class="rule-card">
+                    <div class="rule-number">01</div>
+                    <h3 class="rule-title">Respect Everyone</h3>
+                    <p class="rule-desc">No harassment, bullying, or being toxic. We're here to have fun, not deal with drama. Treat people how you'd want to be treated.</p>
+                </div>
+
+                <div class="rule-card">
+                    <div class="rule-number">02</div>
+                    <h3 class="rule-title">No Spam</h3>
+                    <p class="rule-desc">Don't flood channels with messages, emojis, or pings. Use channels for their intended purpose. Memes are cool, spam is not.</p>
+                </div>
+
+                <div class="rule-card">
+                    <div class="rule-number">03</div>
+                    <h3 class="rule-title">Keep It Appropriate</h3>
+                    <p class="rule-desc">No NSFW content, excessive profanity, or anything that would get us in trouble. Keep it PG-13 at worst.</p>
+                </div>
+
+                <div class="rule-card">
+                    <div class="rule-number">04</div>
+                    <h3 class="rule-title">No Self-Promo</h3>
+                    <p class="rule-desc">Don't advertise your stuff, other servers, or try to poach members. This server is for the squad, not for your side hustle.</p>
+                </div>
+
+                <div class="rule-card">
+                    <div class="rule-number">05</div>
+                    <h3 class="rule-title">Listen to Mods</h3>
+                    <p class="rule-desc">If a mod tells you to chill, chill. They're here to keep things running smooth. Arguing with mods = bad idea.</p>
+                </div>
+
+                <div class="rule-card">
+                    <div class="rule-number">06</div>
+                    <h3 class="rule-title">Use Channels Correctly</h3>
+                    <p class="rule-desc">Game talk in game channels, general stuff in general. It's organized for a reason - use it right.</p>
+                </div>
+
+                <div class="rule-card">
+                    <div class="rule-number">07</div>
+                    <h3 class="rule-title">Voice Channel Etiquette</h3>
+                    <p class="rule-desc">Don't be loud/annoying, don't play music without asking, don't interrupt people constantly. Basic respect goes a long way.</p>
+                </div>
+
+                <div class="rule-card">
+                    <div class="rule-number">08</div>
+                    <h3 class="rule-title">No Drama</h3>
+                    <p class="rule-desc">Keep personal beef out of the server. Handle it in DMs. We're not here to referee your arguments.</p>
+                </div>
+            </div>
+
+            <div class="rules-footer-note">
+                <p><strong>Breaking Rules = Consequences</strong></p>
+                <p>First time: Warning. Second time: Timeout. Third time: Kick. Keep it up: Ban.</p>
+                <p>We're pretty chill, but don't test us. Just follow the rules and we're good.</p>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 class="footer-title">THE LOBBY</h3>
+                    <p class="footer-text">Where the squad levels up.</p>
+                </div>
+                <div class="footer-section">
+                    <h3 class="footer-title">Contact</h3>
+                    <p class="footer-text">Email: <a href="mailto:mrguyrealofficial@gmail.com" class="footer-link">mrguyrealofficial@gmail.com</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="footer-text">THE LOBBY © 2025 | Built Different</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
